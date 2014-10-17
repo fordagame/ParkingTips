@@ -5,12 +5,12 @@
   "AppIdentifier": "com.telerik.ParkTips",
   "DisplayName": "ParkTips",
   "Author": "",
-  "Description": "",
+  "Description": "ParkTips",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
     "1",
-	"2"
+    "2"
   ],
   "iOSBackgroundMode": [],
   "WP8TileTitle": "",
