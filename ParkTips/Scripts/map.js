@@ -17,7 +17,6 @@ Map.prototype.InitializeMap = function() {
 
 Map.init = function(){
     map_view = new Map();
-    $("#map").width($("#map-view [data-role=content]").width());
     $("#map").height($("#map-view [data-role=content]").height());
 }
 
