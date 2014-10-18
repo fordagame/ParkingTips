@@ -1,4 +1,4 @@
-<div data-stretch="true"   id="map-view" data-layout="default" data-role="view" data-title="Add new parking place" class="view">
+<div data-stretch="true"   id="map-view" data-layout="default" data-role="view" data-title="Add new parking place" data-init="initForm" class="view">
              
      <div data-role="header">
          <div data-role="navbar">
@@ -7,5 +7,43 @@
           </div> 
       </div> 
      <div data-role="content" >
+
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <label>
+                            Title
+                            <input type="text" value="Text" />
+                        </label>
+                    </li>
+                    <li>
+                        <label>Tip type
+                            <select id="tipType">
+                                <option value="First Option">First Type</option>
+                                <option value="Second Option">Second Option</option>
+                                <option value="Third Option">Third Option</option>
+                                <option value="Fourth Option">Fourth Option</option>
+                                <option value="First Option">Fifth Option</option>
+                                <option value="Sixth Option">Sixth Option</option>
+                            </select>
+                        </label>
+                    </li>
+                     <li>
+                        <label>
+                            Description
+                            <textarea style="resize: none; height:100px">Multiline Text</textarea>
+                        </label>
+                    </li>
+                </ul>
+
      </div>
 </div>
+
+<script>
+    function initForm() {
+        
+        if (kendo.ui.DropDownList) {
+            $("#tipType").kendoDropDownList();
+        }
+
+    }
+</script>
