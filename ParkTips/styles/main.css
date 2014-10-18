@@ -20,6 +20,7 @@ body {
 .map_class2{
     background: blue; 
     border: 1px black solid;
+    width: 100%;
 }
 
 
