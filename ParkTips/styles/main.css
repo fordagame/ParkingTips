@@ -1,0 +1,61 @@
+body {
+}
+
+.view{
+    position:relative;
+}
+
+.map_class{
+    position: absolute; 
+    left: 0px; 
+    top: 0px; 
+    right: 0px; 
+    bottom: 0px; 
+    background: blue; 
+    border: 1px black solid;
+}
+
+
+
+.map_class2{
+    background: blue; 
+    border: 1px black solid;
+}
+
+
+ .hide-text {
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+#parkingApp .nav-button-back {
+    background-image: url(images/icon-arrow_left.png);
+    background-position: .65em 50%;
+}
+
+
+#parkingApp .nav-button-add {
+    background-image: url(images/icon-add.png);
+}
+
+#parkingApp .nav-button-cancel,
+#parkingApp .nav-button-post {
+    width: auto;
+    height: 2.5em;
+    font-size: .85rem;
+    line-height: 2.5em;
+}
+
+
+#parkingApp .nav-button {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 2em;
+    height: 2em;
+    border: 0 none;
+    background-color: transparent;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+}
+
