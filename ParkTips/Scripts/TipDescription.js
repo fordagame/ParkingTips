@@ -7,12 +7,15 @@ var tipsDal = everlive.data("Tips");
         console.log(tip);
         descriptionTip = tip;
         console.log(tip);
+        $("#title").html(descriptionTip.Title);
+        $("#startHour").html(descriptionTip.DescriptionObject[0].StartHour);
+        $("#endHour").html(descriptionTip.DescriptionObject[0].EndHour);
+        $("#descriptionText").html(descriptionTip.DescriptionObject[0].Description);
     }, function(data){
         
     });
     
-    //$("#title").html(descriptionTip.title);
-    $("#descriptionText").html("test");
+    
 }
 
 function NavigateToMap(){
