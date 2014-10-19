@@ -50,8 +50,8 @@ tipsDAL.get()
               polygon.setMap(map);
             
             google.maps.event.addListener(polygon, 'click', function (event) {
-                DescriptionId = tip.Id
-                 app.navigate('Views/TipDescription.html', tip.Id);
+                 DescriptionId = tip.Id;
+                 app.navigate('Views/TipDescription.html');
             });  
         }
     },
