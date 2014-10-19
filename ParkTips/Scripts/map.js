@@ -53,7 +53,6 @@ tipsDAL.get()
             });  
         }
         
-        map.setCenter(latLng);
     },
     function(error){
         alert(JSON.stringify(error));
@@ -78,7 +77,6 @@ function addMarker(myLatlng) {
 
 Map.init = function(){
     map_view = new Map();
-    $("#map").height($("#map-view [data-role=content]").height());
 }
 
 function NavigateToAddNewParkingView(){
