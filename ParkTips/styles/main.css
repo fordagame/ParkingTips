@@ -67,6 +67,13 @@ body {
     color: rgb(111,95,204) !important;
 }
 
+
+.nav-button-text-left{
+    position: relative;
+    top: 6px;
+    color: rgb(111,95,204) !important;
+}
+
 [data-role=navbar]{
     vertical-align: middle;
 }
