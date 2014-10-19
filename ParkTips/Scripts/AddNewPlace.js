@@ -174,5 +174,6 @@ var tipsDAL = everlive.data("Tips");
         navigator.geolocation.getCurrentPosition(createMap);
     },
     function(error){
+        alert(error);
     });
 }
