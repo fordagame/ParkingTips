@@ -60,21 +60,20 @@ function serializeCoordinatesToContainer() {
         Coordinates[i] = {"Latitude" : coordinates[i].lat() , "Longitude" : coordinates[i].lng()};
     }
 }
-
+var polygon2;
 function redrawPath() {
-    if (flightPathManual != null) {
-        flightPathManual.setMap(null);
-    }
-
-    flightPathManual = new google.maps.Polyline({
-        path: getLatLngFromMarkers(),
-        geodesic: true,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-    });
-
-    flightPathManual.setMap(addMap);
+    if(polygon2 != null)
+       polygon2.setMap(null);
+   polygon2 = new google.maps.Polygon({
+                paths: getLatLngFromMarkers(),
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35
+              });
+            
+  polygon2.setMap(addMap);
 }
 
 function getLatLngFromMarkers() {
@@ -116,9 +115,11 @@ function OnSave(){
     var startHour = $("#startHour").val();
     var endHour = $("#endHour").val();
 var tipsDAL = everlive.data("Tips");
-tipsDAL.create({ 'TipType' : 2, 'Title':'Test' },
+    tipsDAL.create({ 'TipType' : TipType, 'Title': title, 
+                    'DescriptionObject' : [{Description:Description,  StartHour: startHour , EndHour : endHour, IsPrimary: true }], 
+                    'CoordinateObject' : Coordinates  },
     function(data){
-        var resultTip = JSON.stringify(data);
+       /* var resultTip = JSON.stringify(data);
         var tip = jQuery.parseJSON( resultTip );
           var tipDescriptionsDAL = everlive.data("TipDescriptions");
             tipDescriptionsDAL.create({Description:Description ,TipID: tip.result.Id, 
@@ -128,7 +129,7 @@ tipsDAL.create({ 'TipType' : 2, 'Title':'Test' },
                                            
                                             var resultTipDescr = JSON.stringify(data);
                                             var tipDescr = jQuery.parseJSON( resultTipDescr );
-                                            tipsDAL.updateSingle({ 'Id': tip.result.Id, 'Description': tipDescr.result.Id }, // data
+                                            tipsDAL.updateSingle({ 'Id': tip.result.Id, 'Descriptions': [tipDescr.result.Id] }, // data
                                                                 function(data){
                                                                     console.log(JSON.stringify(data));
                                                                 },
@@ -138,31 +139,31 @@ tipsDAL.create({ 'TipType' : 2, 'Title':'Test' },
                                            
                                        }, function(data) { console.log(JSON.stringify(data));  });  
         
-      /*  var tipDescriptionsDAL = everlive.data("TipDescriptions");
+       var tipDescriptionsDAL = everlive.data("TipDescriptions");
         for(i = 0; i < Descriptions.length; i++){
             tipDescriptionsDAL.create({'Description': Descriptions[i],'TipID': tip.result.Id, 
                                        'StartHour': Descriptions[i].StartHour , 'EndHour', Descriptions[i].EndHour,
                                        'IsPrimary': Descriptions[i].IsPrimary },
                                        function(data){ console.log(JSON.stringify(data)) }, function(data), { console.log(JSON.stringify(data))  });  
-        }*/
-          var tipCoordinatesDAL = everlive.data("TipCoordinates");
+        }
+        var tipCoordinatesDAL = everlive.data("TipCoordinates");
         for(i = 0; i < Coordinates.length; i++){
             tipCoordinatesDAL.create({TipID: tip.result.Id, 
                                       Latitude: Coordinates[i].Latitude, Longitude: Coordinates[i].Longitude, },
                                        function(data){
                                            var resultTipCoord = JSON.stringify(data);
                                             var tipCoord = jQuery.parseJSON( resultTipCoord );
-                                        /*    tipsDAL.updateSingle({ 'Id': tip.result.Id, 'Coordinates': tipCoord.result.Id }, // data
+                                            tipsDAL.updateSingle({ 'Id': tip.result.Id, 'Coordinates': [tipCoord.result.Id] }, // data
                                                                 function(data){
                                                                     console.log(JSON.stringify(data));
                                                                 },
                                                                 function(error){
                                                                     alert(JSON.stringify(error));
-                                                                });*/
+                                                                });
                                        }, function(data) { console.log(JSON.stringify(data));  });  
            
         }
-        
+       */ 
         $("#title").val('');
         $("#type").val('');
         $("#description").val('');
