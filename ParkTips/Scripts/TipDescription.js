@@ -7,10 +7,10 @@ var tipsDal = everlive.data("Tips");
         tip = jQuery.parseJSON( resultTip );
         descriptionTip = tip;
         console.log(tip);
-        $("#title").html(descriptionTip.Title);
-        $("#startHour").html(descriptionTip.DescriptionObject[0].StartHour);
-        $("#endHour").html(descriptionTip.DescriptionObject[0].EndHour);
-        $("#descriptionText").html(descriptionTip.DescriptionObject[0].Description);
+        $("#title").html(tip.result.Title);
+        $("#startHour").html(tip.result.DescriptionObject[0].StartHour);
+        $("#endHour").html(tip.result.DescriptionObject[0].EndHour);
+        $("#descriptionText").html(tip.result.DescriptionObject[0].Description);
     }, function(data){
         
     });
