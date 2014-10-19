@@ -77,3 +77,7 @@ body {
 [data-role=navbar]{
     vertical-align: middle;
 }
+
+.k-dropdown-wrap .k-input{
+    float: left  !important;
+}
