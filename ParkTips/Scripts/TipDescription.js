@@ -1,5 +1,4 @@
 function initFormDescr(){
-    alert(DescriptionId);
 var descriptionTip;
 var tipsDal = everlive.data("Tips");
     tipsDal.getById(DescriptionId).then(function(data){
@@ -8,12 +7,15 @@ var tipsDal = everlive.data("Tips");
         tip = jQuery.parseJSON( resultTip );
         descriptionTip = tip;
         console.log(tip);
+        $("#title").html(descriptionTip.Title);
+        $("#startHour").html(descriptionTip.DescriptionObject[0].StartHour);
+        $("#endHour").html(descriptionTip.DescriptionObject[0].EndHour);
+        $("#descriptionText").html(descriptionTip.DescriptionObject[0].Description);
     }, function(data){
         
     });
     
-    //$("#title").html(descriptionTip.title);
-    $("#descriptionText").html("test");
+    
 }
 
 function NavigateToMap(){
