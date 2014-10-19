@@ -114,6 +114,7 @@ function OnSave(){
     var Description = $("#description").val();
     var startHour = $("#startHour").val();
     var endHour = $("#endHour").val();
+    console.log([{Description:Description,  StartHour: startHour , EndHour : endHour, IsPrimary: true }]);
 var tipsDAL = everlive.data("Tips");
     tipsDAL.create({ 'TipType' : TipType, 'Title': title, 
                     'DescriptionObject' : [{Description:Description,  StartHour: startHour , EndHour : endHour, IsPrimary: true }], 

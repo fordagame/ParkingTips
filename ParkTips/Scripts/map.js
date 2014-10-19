@@ -1,6 +1,7 @@
 
 var map_view = null;
 var map;
+var latLng = null;
 function Map(){
     map = null;
     navigator.geolocation.getCurrentPosition(InitializeMap);
@@ -10,19 +11,19 @@ var markers = [];
 function InitializeMap (location) {
     
 var tipsDAL = everlive.data("Tips");
+   latLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
   var mapOptions = {
     zoom: 12,
-    center: new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
+    center: latLng
   };
     console.log(location);
     console.log(mapOptions);
   map = new google.maps.Map(document.getElementById('map'),
       mapOptions);
-    
+map.setCenter(latLng);    
     
 tipsDAL.get()
     .then(function(data){
-        console.log(data);
         var resultTip = JSON.stringify(data);
         tips = jQuery.parseJSON( resultTip );
         for(i = 0; i < tips.result.length; i++){
@@ -30,27 +31,26 @@ tipsDAL.get()
             tip.Markers = [];
             for(j = 0; j < tip.CoordinateObject.length; j++){
                 var coordinate = tip.CoordinateObject[j];
-                console.log(coordinate);
+
                 var latLng = new google.maps.LatLng(coordinate.Latitude, coordinate.Longitude);
-                console.log(latLng);
+                
                // addMarker(latLng)
                 tip.Markers.push(latLng);
 
             }
-            
-               polygon = new google.maps.Polygon({
+              var polygon = new google.maps.Polygon({
                 paths: tip.Markers,
                 strokeColor: '#FF0000',
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
                 fillColor: '#FF0000',
-                fillOpacity: 0.35
+                fillOpacity: 0.35,
+                 tipId: tip.Id
               });
             
               polygon.setMap(map);
-            
             google.maps.event.addListener(polygon, 'click', function (event) {
-                 DescriptionId = tip.Id;
+                 DescriptionId = this.tipId;
                  app.navigate('Views/TipDescription.html');
             });  
         }
