@@ -11,8 +11,6 @@ var tipsDal = everlive.data("Tips");
     }, function(data){
         
     });
-    
-    
 }
 
 function NavigateToMap(){

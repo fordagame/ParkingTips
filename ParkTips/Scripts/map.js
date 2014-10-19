@@ -16,11 +16,9 @@ var tipsDAL = everlive.data("Tips");
     zoom: 12,
     center: latLng
   };
-    console.log(location);
-    console.log(mapOptions);
+    
   map = new google.maps.Map(document.getElementById('map'),
-      mapOptions);
-map.setCenter(latLng);    
+      mapOptions);    
     
 tipsDAL.get()
     .then(function(data){
@@ -54,6 +52,8 @@ tipsDAL.get()
                  app.navigate('Views/TipDescription.html');
             });  
         }
+        
+        map.setCenter(latLng);
     },
     function(error){
         alert(JSON.stringify(error));
