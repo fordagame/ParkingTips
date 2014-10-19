@@ -1,4 +1,6 @@
-<div data-stretch="true"   id="map-view" data-layout="default" data-role="view" data-title="Add new parking place" data-init="initForm" class="view">
+
+ <script src="Scripts/AddNewPlace.js" ></script>
+<div data-stretch="true"   id="add-tip-view" data-layout="default" data-role="view" data-title="Add new parking place" data-init="initForm" class="view">
              
      <div data-role="header">
          <div data-role="navbar">
@@ -14,12 +16,12 @@
                     <li>
                         <label>
                             Title
-                            <input type="text" value="Text" />
+                            <input id="title" type="text" placeholder="Title" />
                         </label>
                     </li>
                     <li>
                         <label>Tip type
-                            <select id="tipType">
+                            <select id="type">
                                 <option value="1">Tip</option>
                                 <option value="2">Parking place</option>
                             </select>
@@ -28,30 +30,40 @@
                      <li>
                          <div>
                                  <label>
-                                    Time 
+                                    Start Hour 
                                 </label>
                            <div>
-                                 <input type="time" value="22:30" />
+                                 <input id="startHour" type="number" value="0" />
                              </div>
                          </div>
+                    </li>
+                    
+                     <li>
+                         <div>
+                                 <label>
+                                    End Hour 
+                                </label>
+                           <div>
+                                 <input id="endHour" type="number" value="23" />
+                             </div>
+                         </div>
+                    </li>
+                    <li>
                          <div>
                              <label>Description:</label>
-                                 <textarea style="resize: none; width:100%; height:100px" placeholder="Multiline Text"></textarea>
+                                 <textarea id="description" style="resize: none; width:100%; height:100px" placeholder="Description"></textarea>
                          </div>
                     </li>
                 </ul>
-         
+         <br />
+             
+         </div>
+         <div data-role="content">
+             
+             
+         <div id="map-add" style="width: 100%; height: 300px;">
+    </div>
 
 
      </div>
 </div>
-
-<script>
-    function initForm() {
-        
-        if (kendo.ui.DropDownList) {
-            $("#tipType").kendoDropDownList();
-        }
-
-    }
-</script>

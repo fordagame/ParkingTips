@@ -1,17 +1,18 @@
 
 var map_view = null;
-
+var map;
 function Map(){
-    this.map = null;
-    google.maps.event.addDomListener(window, 'load', this.InitializeMap);
+    map = null;
+    navigator.geolocation.getCurrentPosition(InitializeMap);
 }
 
-Map.prototype.InitializeMap = function() {
+function InitializeMap (location) {
   var mapOptions = {
-    zoom: 12,
-    center: new google.maps.LatLng(42.700, 23.33333)
+    zoom: 15,
+    center: new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
   };
-  this.map = new google.maps.Map(document.getElementById('map'),
+    console.info(mapOptions);
+  map = new google.maps.Map(document.getElementById('map'),
       mapOptions);
 }
 
@@ -23,3 +24,21 @@ Map.init = function(){
 function NavigateToAddNewParkingView(){
      app.navigate('Views/AddNewPlace.html');
 }
+
+
+var expandExp = {
+  "Descriptions" : true,
+  "Coordinates" : true
+};
+var query = new Everlive.Query();
+query.expand(expandExp);
+var tipsDAL = everlive.data("Tips");
+tipsDAL.get(query)
+    .then(function(data){
+        var resultTip = JSON.stringify(data);
+        var tip = jQuery.parseJSON( resultTip );
+        console.log(tip);
+    },
+    function(error){
+        alert(JSON.stringify(error));
+    });
